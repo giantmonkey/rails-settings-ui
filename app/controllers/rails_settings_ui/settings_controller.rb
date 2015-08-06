@@ -17,7 +17,7 @@ class RailsSettingsUi::SettingsController < RailsSettingsUi::ApplicationControll
   private
 
   def collection
-    all_settings = RailsSettingsUi.settings_klass.defaults.merge(RailsSettingsUi.settings_klass.get_all)
+    all_settings = RailsSettingsUi.settings_klass.defaults.merge(RailsSettingsUi.settings_klass.all)
     all_settings_without_ignored = all_settings.reject{ |name, description| RailsSettingsUi.ignored_settings.include?(name.to_sym) }
     @settings = Hash[all_settings_without_ignored]
   end
